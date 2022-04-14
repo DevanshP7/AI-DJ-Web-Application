@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Tangerine&display=swap');
+
+body{
+    text-align: center;
+    background-image: url('https://media1.giphy.com/media/4ZcTVtXKspul0JFqhU/giphy.gif');
+    background-size:auto;
+}
+
+#header{
+    font-family: 'Neonderthaw', cursive;
+    font-size: 50px;
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 90px;
+    margin-right: 90px;
+    transition: transform 1s, background-color 1s, color 1s;
+    border:5px solid blue;
+}
+
+#note{
+    font-size: 30px;
+    font-family: 'Tangerine', cursive;
+}
+
+#header:hover{
+    transform: scale(1.104);
+    color: blue;
+    background-color: aliceblue;
