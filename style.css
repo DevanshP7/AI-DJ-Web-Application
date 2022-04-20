@@ -1,30 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Tangerine&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Tangerine&family=Updock&display=swap');
 
 body{
-    text-align: center;
-    background-image: url('https://media1.giphy.com/media/4ZcTVtXKspul0JFqhU/giphy.gif');
-    background-size:auto;
+    background-image: url("background.jpg");
+    background-size: cover;
 }
 
-#header{
+h3{
     font-family: 'Neonderthaw', cursive;
+    background-color: azure;
     font-size: 50px;
-    background-color: blue;
-    color: aliceblue;
     border-radius: 20px;
-    padding: 10px;
-    margin-left: 90px;
-    margin-right: 90px;
-    transition: transform 1s, background-color 1s, color 1s;
-    border:5px solid blue;
+    animation-name: background_glow;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes background_glow{
+    0%{background-color: rgb(162, 230, 162);}
+    25%{background-color: aliceblue;}
+    50%{background-color: rgb(183, 207, 250);}
+    75%{background-color: rgb(255, 187, 187);}
+    100%{background-color: rgb(162, 230, 162);}
 }
 
 #note{
     font-size: 30px;
-    font-family: 'Tangerine', cursive;
+    font-family: 'Rubik Moonrocks', cursive;
+    font-weight: 300;
+    color: blue;
 }
 
-#header:hover{
-    transform: scale(1.104);
-    color: blue;
+.speed{
+    float: left;
+}
+
+.volume{
+    float: right;
+}
+
+.gif{
+    width: 250px;
+    border-radius: 100%;
+}
+
+.speed .gif{
+    transform: scaleX(-1);
+}
+
+label{
+    font-size: 30px;
+    font-family: cursive;
     background-color: aliceblue;
+    color: cornflowerblue;
+    border-radius: 50%;
+    padding: 10px;
+    transition: transform 1s, background-color 1s, color 1s;
+}
+
+label:hover{
+    transform:scale(2.0);
+    background-color: cornflowerblue;
+    color: aliceblue;
+}
+
+#play_button{
+    font-family: 'updock', cursive;
+    font-size: 50px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    color: aliceblue;
+    background-color: crimson;
+    transition: transform 1s, background-color 1s, color 1s;
+}
+
+#play_button:hover{
+    transform: scale(1.5);
+    color: crimson;
+    background-color: aliceblue;
+}
+
+canvas{
+    border: 5px dashed rgb(121, 121, 252);
+    background-color: aliceblue;
+    border-radius: 20px;
+    transform: scaleX(-1);
+}
+
+#stop_button{
+    font-family: 'updock', cursive;
+    font-size: 50px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    color: aliceblue;
+    background-color: rgb(0, 176, 21);
+    transition: transform 1s, background-color 1s, color 1s;
+}
+
+#stop_button:hover{
+    transform: scale(1.5);
+    color: rgb(0, 176, 21);
+    background-color: aliceblue;
+}
