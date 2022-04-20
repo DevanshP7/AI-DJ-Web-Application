@@ -1,4 +1,10 @@
-song = '';
+harry_potter = '';
+peter_pan = '';
+
+function preload(){
+    harry_potter = loadSound('Harry Potter.mp3');
+    peter_pan = loadSound('Peter Pan.mp3');
+}
 
 function setup(){
 
@@ -12,16 +18,4 @@ function setup(){
 function draw(){
 
     image(video, 0, 0 ,640, 480);
-}
-
-function preload(){
-    song = loadSound("music.mp3");
-}   
-
-function play_music(){
-    song.play();
-}
-
-function stop_music(){
-    song.stop();
 }
