@@ -9,7 +9,7 @@ right_wrist_score = 0;
 harry_status = '';
 peter_status = '';
 
-function preload(){
+function preload() {
 
     harry_potter = loadSound('Harry Potter.mp3');
     peter_pan = loadSound('Peter Pan.mp3');
@@ -20,9 +20,9 @@ function preload(){
 
 }
 
-function setup(){
+function setup() {
 
-    canvas = createCanvas(640,480);
+    canvas = createCanvas(640, 480);
     canvas.position(630, 350);
 
     video = createCapture(VIDEO);
@@ -32,33 +32,46 @@ function setup(){
     posenet.on('pose', got_poses);
 }
 
-function draw(){
+function draw() {
 
-    image(video, 0, 0 ,640, 480);
+    image(video, 0, 0, 640, 480);
 
     harry_status = harry_potter.isPlaying();
     peter_status = peter_pan.isPlaying();
-    if(left_wrist_score > 0.2){
-        fill('green');
-        stroke('green');
+
+    fill('green');
+    stroke('green');
+
+    if (left_wrist_score > 0.2) {
+
         circle(left_wrist_x, left_wrist_y, 20);
         peter_pan.stop();
-        if(harry_status == false){
+        if (harry_status == false) {
             harry_potter.play();
-            
+            document.getElementById('song_name').innerHTML = 'Harry Potter Playing';
+        }
+    }
+
+    if (right_wrist_score > 0.2) {
+
+        circle(right_wrist_x, right_wrist_y, 20);
+        harry_potter.stop();
+        if (peter_status == false) {
+            peter_pan.play();
+            document.getElementById('song_name').innerHTML = 'Peter Pan Playing';
         }
     }
 }
 
-function model_loaded(){
+function model_loaded() {
 
     console.log('Posenet Model Initialized');
 
 }
 
-function got_poses(results){
+function got_poses(results) {
 
-    if(results.length > 0){
+    if (results.length > 0) {
         console.log(results);
 
         left_wrist_x = results[0].pose.leftWrist.x;
@@ -70,6 +83,9 @@ function got_poses(results){
         console.log(`Right Wrist X = ${right_wrist_x} | Right Wrist Y = ${right_wrist_y}.`);
 
         left_wrist_score = results[0].pose.keypoints[9].score;
+        right_wrist_score = results[0].pose.keypoints[10].score;
+
+        console.log(right_wrist_score);
         console.log(left_wrist_score);
     }
 }
