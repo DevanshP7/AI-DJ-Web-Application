@@ -4,6 +4,10 @@ left_wrist_x = 0;
 left_wrist_y = 0;
 right_wrist_x = 0;
 right_wrist_y = 0;
+left_wrist_score = 0;
+right_wrist_score = 0;
+harry_status = '';
+peter_status = '';
 
 function preload(){
 
@@ -31,6 +35,19 @@ function setup(){
 function draw(){
 
     image(video, 0, 0 ,640, 480);
+
+    harry_status = harry_potter.isPlaying();
+    peter_status = peter_pan.isPlaying();
+    if(left_wrist_score > 0.2){
+        fill('green');
+        stroke('green');
+        circle(left_wrist_x, left_wrist_y, 20);
+        peter_pan.stop();
+        if(harry_status == false){
+            harry_potter.play();
+            
+        }
+    }
 }
 
 function model_loaded(){
@@ -51,5 +68,8 @@ function got_poses(results){
         right_wrist_x = results[0].pose.rightWrist.x;
         right_wrist_y = results[0].pose.rightWrist.y;
         console.log(`Right Wrist X = ${right_wrist_x} | Right Wrist Y = ${right_wrist_y}.`);
+
+        left_wrist_score = results[0].pose.keypoints[9].score;
+        console.log(left_wrist_score);
     }
 }
